@@ -103,8 +103,8 @@
             <br>        <!-- 换行 -->
 
 
-                <el-form-item label="生日：" prop="birthDay">
-                <el-date-picker v-model="policyInfo.startDate" type="date" placeholder="选择日期" @change="getEndDate" value-format="yyyy-MM-dd"></el-date-picker>
+                <el-form-item label="出生日期：" prop="birthDay">
+                <el-date-picker v-model="applicantInfo.birthDay" type="date" placeholder="选择日期" @change="getEndDate" value-format="yyyy-MM-dd"></el-date-picker>
                 </el-form-item> 
 
                 <el-form-item label="手机号码：" prop="mobile">
@@ -170,10 +170,20 @@ export default {
                     if(pass==false){
                     callback(new Error('身份证格式有误'));
                     }else{
-                        
+                        var code = value;
+                        var sexnum = code.substr(-2,1);
+                        var bornnum = code.substr(6,8);
+                        this.applicantInfo.birthDay = bornnum;
+                        console.log(bornnum);
+                        if(sexnum==1){
+                            this.applicantInfo.gender = "01";
+                        }else{
+                           this.applicantInfo.gender = "02"; 
+                        }
                     }   
             }
         }   
+        var check 
         return{ 
             productInfo: {
                 riskCode:"EAA",
