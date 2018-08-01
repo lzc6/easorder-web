@@ -39,7 +39,7 @@ import { Message } from 'element-ui';
         });
 
           // this.$http.post('http://56.145.32.63:8080/login/check',this.form,{ emulateJSON: true }).then(
-          this.$http.post('http://56.145.32.63:8082/login/check',this.form,{ emulateJSON: true }).then(
+          this.$http.post('http://56.145.32.32:8083/login/check',this.form,{ emulateJSON: true }).then(
               response =>{
                   this.code = response.data.code;
                   this.name = response.data.data;
